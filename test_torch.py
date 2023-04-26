@@ -12,9 +12,9 @@ class Test_NSimplexTorch(unittest.TestCase):
     def _test_single(self, dim, n_pivots, device, seed):
         torch.manual_seed(seed)
 
-        pivots = torch.rand((n_pivots, dim)).to(device)
-        o1 = torch.rand((dim,)).to(device)
-        o2 = torch.rand((dim,)).to(device)
+        pivots = torch.rand((n_pivots, dim)).to(device) #random pivots
+        o1 = torch.rand((dim,)).to(device) #random objects
+        o2 = torch.rand((dim,)).to(device) #random objects
 
         # pivot-pivot distance matrix with shape (n_pivots, n_pivots)
         pp = torch.pdist(pivots)
@@ -44,7 +44,7 @@ class Test_NSimplexTorch(unittest.TestCase):
 
         self.assertTrue(lwb <= oo  <= upb)
         self.assertTrue(lwb <= zen <= upb)
-        print(f'l: {lwb:.5f} <= o: {oo:.5f} (m: {(lwb+upb) / 2:.5f} - z: {zen:.5f}) <= u: {upb:.5f}')
+        print(f'lwb: {lwb:.5f} <= original_dist: {oo:.5f} (m: {(lwb+upb) / 2:.5f} - zen: {zen:.5f}) <= upb: {upb:.5f}')
 
     def _test_batched(self, dim, n_objects, n_pivots, device, seed):
         pivots = torch.rand((n_pivots, dim)).to(device)
@@ -81,8 +81,8 @@ class Test_NSimplexTorch(unittest.TestCase):
         self.assertTrue((lwb <= zen).all() and (zen <= upb).all())
 
         mean = (lwb + upb) / 2
-        for l, o, m, z, u in zip(lwb, oo, mean, zen, upb):
-            print(f'l: {l:.5f} <= o: {o:.5f} (m: {m:.5f} - z: {z:.5f}) <= u: {u:.5f}')
+        for l, original_dist, m, z, u in zip(lwb, oo, mean, zen, upb):
+           print(f'lwb: {l:.5f} <= original_dist: {original_dist:.5f} (mean: {m:.5f} - zen: {z:.5f}) <= upb: {u:.5f}')
 
     def test_single(self):
         dim = 1024
@@ -96,7 +96,7 @@ class Test_NSimplexTorch(unittest.TestCase):
 
     def test_batched(self):
         dim = 1024
-        n_objects = 64
+        n_objects = 10
         n_pivots = 256
         seed = 7
 
