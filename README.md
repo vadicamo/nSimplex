@@ -3,7 +3,7 @@ Python code to compute the nSimplex projection, that maps metric objects into a 
 
 A set of $n$ reference objects (pivots) $p_1,..,p_n \subset (X,d)$ are used to compute a simplex 'base'. Then for each object $o \in X$ the distances $d(o,p_i)$ are used to project the object into a $n$-dimensional Euclidean space.
 
-## Example (using numpy)
+## Example 
 see 'test.py'
 ```python 
 import numpy as np
