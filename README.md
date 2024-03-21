@@ -106,10 +106,17 @@ For any two objects $q$ and $o$, the projected points $v_o$, $v_q$ satisfies $\e
 # Citation
 If you use this code in your research, please cite this paper:
 ```
-@article{connor2023nsimplex,
-  title={nSimplex Zen: A Novel Dimensionality Reduction for Euclidean and Hilbert Spaces},
-  author={Connor, Richard and Vadicamo, Lucia},
-  journal={arXiv preprint arXiv:2302.11508},
-  year={2023}
+@article{connor2024nsimplex,
+title = {nSimplex Zen: A Novel Dimensionality Reduction for Euclidean and Hilbert Spaces},
+year = {2024},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+issn = {1556-4681},
+url = {https://doi.org/10.1145/3647642},
+doi = {10.1145/3647642},
+journal = {ACM Transactions on Knowledge Discovery from Data},
+month = {feb},
 }
+
+
 ```
